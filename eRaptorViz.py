@@ -13,9 +13,19 @@ from streamlit_gsheets import GSheetsConnection
 import plotly.express as px
 
 # app title
-st.title("NBA Raptor Data from Neil Paine")
+st.title("NBA eRaptor Data Visualization")
+st.subheader("Filtering and visualization tools for estimated Raptor values for past and present NBA players")
+st.markdown("I greatly missed the RAPTOR ratings from FiveThirtyEight and I was ecstatic to see that"
+            " [Neil Paine](https://neilpaine.substack.com/p/nba-estimated-raptor-player-ratings)  re-created"
+            " a basic version of RAPTOR ratings and published it in a public Google Spreadsheet."
+)
+st.markdown("FiveThirtyEight excelled at creating visualizations that accompanied the ratings. I wanted"
+            " to re-create some basic visualizations to help understand the data."
+            " If you have any ideas for how to improve this app, please let me know at wgpatrick@gmail.com"
+)
 
-st.header("Filter Player Data!", divider="rainbow")
+st.header("Filter eRAPTOR Data", divider="rainbow")
+st.markdown("Filter the data below by year, player age, regular season vs. playoffs, minutes played, or myriad other ways.")
 
 # Define filter dataframe code
 def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
@@ -101,9 +111,11 @@ data = conn.read(spreadsheet=url, skiprows=0, index_col=0,header=1)
 #Create the filtered dataframe
 df = filter_dataframe(data)
 st.dataframe(df)
+st.markdown("Note: The filtered dataset is what is plotted in the visualization below.")
+st.markdown("Note: Sort the table by selecting the column header.")
 
 #Create Scatter Plot
-st.header("Create 2x2 Plot", divider="rainbow")
+st.header("Offensive x Defensive eRAPTOR", divider="rainbow")
 circle_color = st.selectbox("Select Circle Color", df.columns,index=11)
 fig = px.scatter(df, x='eRO',y='eRD',hover_name='Player', color=circle_color,
                  title="Offensive eRaptor vs Defensive eRaptor for Both Playoffs and Regular Season")

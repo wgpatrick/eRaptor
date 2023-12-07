@@ -1,4 +1,4 @@
-# example/st_app.py
+# eRaptorViz.py
 
 from pandas.api.types import (
     is_categorical_dtype,
@@ -8,7 +8,6 @@ from pandas.api.types import (
 )
 
 import pandas as pd
-import random
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 import plotly.express as px

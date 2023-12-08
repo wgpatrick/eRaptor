@@ -104,7 +104,7 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 # Get all values from the worksheet
-url = 'https://docs.google.com/spreadsheets/d/1CsPkNuDvHunzTiNeqSq_QC9Nr2f4Ioco2wUggJ9VQsI/edit#gid=1113356622'
+url = 'https://docs.google.com/spreadsheets/d/1CsPkNuDvHunzTiNeqSq_QC9Nr2f4Ioco2wUggJ9VQsI/'
 conn = st.connection("gsheets", type=GSheetsConnection)
 data = conn.read(spreadsheet=url, skiprows=0, index_col=0,header=1)
 

@@ -110,6 +110,7 @@ data = conn.read(spreadsheet=url, skiprows=0, index_col=0,header=1)
 
 #Create the filtered dataframe
 df = filter_dataframe(data)
+df = df.sort_values(['Player','Year'], ascending=[True,True])
 st.dataframe(df)
 st.markdown("Note: The filtered dataset is what is plotted in the visualization below.")
 st.markdown("Note: Sort the table by selecting the column header.")
